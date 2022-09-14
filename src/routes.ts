@@ -7,3 +7,4 @@ export const router = Router()
 
 router.post('/users', usersController.handleCreate)
 router.post('/users/login', usersController.handleLogin)
+router.get('/users/:id', usersController.handleGetById)

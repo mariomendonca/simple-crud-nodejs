@@ -55,4 +55,19 @@ export class UsersController {
       return res.status(400).json({ message: 'Unexpected error' })
     }
   }
+
+  async handleGetById(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params
+    try {
+      const user = await prisma.user.findFirst({
+        where: {
+          id
+        }
+      })
+
+      return res.status(200).json(user)
+    } catch (error) {
+      return res.sendStatus(400)
+    }
+  }
 }
